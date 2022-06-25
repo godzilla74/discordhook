@@ -1,7 +1,7 @@
 package main
 
 import (
-	"discordhook"
+	"github.com/jonathantyar/discordhook"
 	"log"
 )
 
