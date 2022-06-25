@@ -1,16 +1,24 @@
-# discordhook
-This package provides a super simple interface to send discord messages through webhooks in golang.
+package main
 
-## Installation
-```
-go get github.com/jonathantyar/discordhook
-```
-## Example
-Below is some example that you can use, and try on example.go right away.
+import (
+	"github.com/jonathantyar/discordhook"
+	"log"
+)
 
-### Simple Message
-Generate simple message like this.
-```
+var (
+	username    = "DiscordHook Example"
+	message     = "Hello this is example content of string"
+	description = "A little description for you guys :)"
+	url         = "webhook_url"
+)
+
+func main() {
+	simple()
+	embed()
+	embedWithFields()
+}
+
+func simple() {
 	message := discordhook.Message{
 		Username: &username,
 		Content:  &message,
@@ -20,13 +28,28 @@ Generate simple message like this.
 	if err != nil {
 		log.Fatal(err)
 	}
-```
+}
 
-![image](https://user-images.githubusercontent.com/19704585/175761705-aa3fb66d-1509-4ebb-875f-56b43e3bebdc.png)
+func embed() {
+	embeds := make([]discordhook.Embed, 0)
+	embeds = append(embeds, discordhook.Embed{
+		Title:       &message,
+		Description: &description,
+	})
 
-### Message with Embeds
-Generate some embed message like that. Please note that if you want the field to be inline, pass the Field type to true.
-```
+	message := discordhook.Message{
+		Username: &username,
+		Content:  &message,
+		Embeds:   &embeds,
+	}
+
+	err := discordhook.SendMessage(url, message)
+	if err != nil {
+		log.Fatal(err)
+	}
+}
+
+func embedWithFields() {
 	var (
 		ccy       = "BTC"
 		value     = "0.0002"
@@ -68,7 +91,4 @@ Generate some embed message like that. Please note that if you want the field to
 	if err != nil {
 		log.Fatal(err)
 	}
-
-```
-![image](https://user-images.githubusercontent.com/19704585/175761732-fcdd037a-a560-433a-a316-42f5869f44f7.png)
-
+}
