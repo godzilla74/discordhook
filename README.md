@@ -9,6 +9,7 @@ go get github.com/jonathantyar/discordhook
 Below is some example that you can use, and try on example.go right away.
 
 ### Simple Message
+Generate simple message like this.
 ```
 	message := discordhook.Message{
 		Username: &username,
@@ -20,10 +21,11 @@ Below is some example that you can use, and try on example.go right away.
 		log.Fatal(err)
 	}
 ```
-Generate simple message like this.
+
 ![image](https://user-images.githubusercontent.com/19704585/175761705-aa3fb66d-1509-4ebb-875f-56b43e3bebdc.png)
 
 ### Message with Embeds
+Generate some embed message like that. Please note that if you want the field to be inline, pass the Field type to true.
 ```
 	var (
 		ccy       = "BTC"
@@ -69,4 +71,4 @@ Generate simple message like this.
 
 ```
 ![image](https://user-images.githubusercontent.com/19704585/175761732-fcdd037a-a560-433a-a316-42f5869f44f7.png)
-Generate some embed message like that. Please note that if you want the field to be inline, pass the Field type to true.
+
