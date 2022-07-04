@@ -3,7 +3,7 @@ This package provides a super simple interface to send discord messages through 
 
 ## Installation
 ```
-go get github.com/jonathantyar/discordhook
+go get github.com/godzilla74/discordhook
 ```
 ## Example
 Below is some example that you can use, and try on example.go right away.
